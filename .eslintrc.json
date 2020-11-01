@@ -16,11 +16,9 @@
     "react/react-in-jsx-scope": 0,
     "react/display-name": 0,
     "react/prop-types": 0,
-    "no-console": [
-      2,
-      {
-        "allow": ["warn", "error"]
-      }
-    ]
+    "react/no-unescaped-entities": 0,
+    "no-console": 1,
+    "no-undef": 0, // conflicts with d3.js conventions
+    "no-unused-vars": 0 // conflicts with d3.js conventions
   }
 }
