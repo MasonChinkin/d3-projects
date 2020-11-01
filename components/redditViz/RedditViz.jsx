@@ -47,7 +47,7 @@ const RedditViz = () => {
           placeholder="subreddit name"
         />
         <select name="sort" className="clear-local" id="sort-input">
-          <option selected="selected" value="Sort">
+          <option defaultValue="selected" value="Sort">
             ----- Sort -----
           </option>
           <option value="hot">Hot</option>
@@ -60,7 +60,7 @@ const RedditViz = () => {
           className="clear-local"
           id="date-range"
         >
-          <option selected="selected" value="">
+          <option defaultValue="selected" value="">
             Past 24 Hours
           </option>
           <option value="Past Hour">Past Hour</option>
