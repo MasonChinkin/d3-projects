@@ -1,0 +1,39 @@
+#visualization {
+  background: white;
+  width: 90vw;
+  height: 67vh;
+}
+
+.visualization-container {
+  position: relative;
+}
+
+.visualization-options {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  height: 42px;
+  top: 3px;
+  right: 3px;
+
+  &>* {
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 3px;
+    width: 42px;
+  }
+}
+
+.material-icons {
+  font-size: 30px;
+}
+
+.fa-chart-bar {
+  font-size: 28px;
+}
+
+.interaction-tips {
+  font-size: 18px;
+  font-weight: bold;
+  text-anchor: middle;
+}
