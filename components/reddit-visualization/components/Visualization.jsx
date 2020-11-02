@@ -10,7 +10,7 @@ const Visualization = () => {
         <button id="bubble-button">
           <img
             className="bubble-button-icon"
-            src="/icons/bubble-chart.svg"
+            src="bubble-chart.svg"
             alt="bubble chart icon"
           />
         </button>

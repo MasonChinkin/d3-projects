@@ -27,18 +27,18 @@ steps:
       - |
         for i in $(gcloud compute os-login ssh-keys list | grep -v FINGERPRINT); do echo $i; gcloud compute os-login ssh-keys remove --key $i; done
 
-  # - id: 'ssh into GCE instance'
-  #   name: gcr.io/cloud-builders/gcloud
-  #   args:
-  #     [
-  #       'compute',
-  #       'ssh',
-  #       '--zone',
-  #       'us-central1-a',
-  #       'portfolio',
-  #       '--',
-  #       'sudo docker pull gcr.io/$PROJECT_ID/$REPO_NAME',
-  #       '&& sudo docker-compose -f ../chinkinma_gmail_com/personal-website-docker-compose/docker-compose.yaml up -d --no-deps --build d3-projects',
-  #       '&& sudo docker system prune -a -f',
-  #       '&& sudo docker ps',
-  #     ]
+  - id: 'ssh into GCE instance'
+    name: gcr.io/cloud-builders/gcloud
+    args:
+      [
+        'compute',
+        'ssh',
+        '--zone',
+        'us-central1-a',
+        'portfolio',
+        '--',
+        'sudo docker pull gcr.io/$PROJECT_ID/$REPO_NAME',
+        '&& sudo docker-compose -f ../chinkinma_gmail_com/personal-website-docker-compose/docker-compose.yaml up -d --no-deps --build d3-projects',
+        '&& sudo docker system prune -a -f',
+        '&& sudo docker ps',
+      ]
