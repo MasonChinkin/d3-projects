@@ -9,7 +9,7 @@ export default function Home() {
       </Head>
 
       <Header title="homepage" />
-      <main>The grid will go here</main>
+      <main>he grid will go here</main>
     </>
   )
 }

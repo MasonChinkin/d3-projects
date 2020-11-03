@@ -1,1 +1,3 @@
-export const isClient = typeof window !== 'undefined'
+module.exports = {
+  isClient: typeof window !== 'undefined',
+}
