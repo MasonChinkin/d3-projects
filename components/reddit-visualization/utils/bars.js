@@ -71,7 +71,7 @@ export function drawBars(dataset) {
     .text((d) => (d.ups > 9 ? upsFormat(d.ups) : d.ups))
     .attr('x', (d, i) => x(i) + x.bandwidth() / 2)
     .attr('y', h)
-    .attr('class', 'barLabel')
+    .attr('class', 'bar-label')
     .transition('start')
     .duration(barTransition)
     .ease(barEase)
@@ -118,7 +118,7 @@ export function drawBars(dataset) {
 
   svg
     .append('g')
-    .attr('class', 'xAxis')
+    .attr('class', 'x-axis')
     .attr('transform', `translate(0,${h + 15})`)
     .call(xAxis)
     .selectAll('text')
@@ -131,7 +131,7 @@ export function drawBars(dataset) {
   svg
     .append('text')
     .text('Upvotes')
-    .attr('class', 'yAxis')
+    .attr('class', 'y-axis')
     .attr('transform', `translate(${-margin.left / 4},${h * 0.6}) rotate(-90)`)
 
   highlightBarButton()

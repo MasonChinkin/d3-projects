@@ -1,7 +1,7 @@
 .bar {
+  cursor: pointer;
   fill: rgb(78, 146, 201);
   transition: fill 0.3s;
-  cursor: pointer;
 
   &:hover {
     fill: rgb(50, 106, 151);
@@ -9,24 +9,24 @@
 }
 
 .hover-rect {
-  opacity: 0;
   cursor: pointer;
+  opacity: 0;
 }
 
-.barLabel {
+.bar-label {
   font-size: 12px;
 }
 
-.xAxis text {
+.x-axis text {
+  font-size: 12px;
   pointer-events: none;
   text-anchor: start;
-  font-size: 12px;
   transform: rotate(45deg);
 }
 
-.yAxis text {
-  text-anchor: middle;
-  font-weight: bold;
+.y-axis text {
   font-size: 20px;
+  font-weight: bold;
   pointer-events: none;
+  text-anchor: middle;
 }

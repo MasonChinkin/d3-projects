@@ -102,14 +102,14 @@ export function drawScatter(dataset) {
   svg
     .append('text')
     .text('Number of comments')
-    .attr('class', 'yAxis')
+    .attr('class', 'y-axis')
     .attr('transform', `translate(${margin * 0.35},${h * 0.6}) rotate(-90)`)
 
   //x axis
   svg
     .append('text')
     .text('Date posted')
-    .attr('class', 'yAxis')
+    .attr('class', 'y-axis')
     .attr('transform', `translate(${w * 0.45},${h - margin * 0.25})`)
 
   // radius

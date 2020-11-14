@@ -80,13 +80,13 @@ mark,
 audio,
 select,
 video {
+  border: 0;
+  font: inherit;
+  font-size: inherit;
   margin: 0;
   padding: 0;
-  border: 0;
-  font-size: inherit;
-  font: inherit;
-  vertical-align: baseline;
   text-decoration: none;
+  vertical-align: baseline;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -120,10 +120,10 @@ q {
   quotes: none;
 }
 
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
   content: '';
   content: none;
 }
@@ -138,8 +138,8 @@ html {
 }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -157,8 +157,8 @@ body::-webkit-scrollbar {
 
 body {
   margin: 0;
-  padding: 0;
   overflow-y: hidden;
+  padding: 0;
 }
 
 body:hover {

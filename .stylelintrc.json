@@ -1,0 +1,11 @@
+{
+  "extends": "stylelint-config-sass-guidelines",
+  "plugins": ["stylelint-order", "stylelint-scss"],
+  "rules": {
+    "color-named": null,
+    "max-nesting-depth": null,
+    "selector-max-id": null,
+    "scss/selector-no-redundant-nesting-selector": null,
+    "selector-pseudo-element-no-unknown": null
+  }
+}
