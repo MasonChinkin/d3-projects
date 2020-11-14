@@ -12,7 +12,9 @@ export async function visualize(vizType) {
       console.log(err) // eslint-disable-line
       subredditNotFound()
       console.clear() // eslint-disable-line
-      console.log('console cleared to protect your eyes from a cors error cause by fetching from non-existent subreddit') // eslint-disable-line
+      console.log(
+        'console cleared to protect your eyes from a cors error cause by fetching from non-existent subreddit'
+      ) // eslint-disable-line
     }
 
     if (json === undefined) return
