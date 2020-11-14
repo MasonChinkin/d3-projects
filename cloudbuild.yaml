@@ -1,15 +1,15 @@
 steps:
-  # - id: 'npm install'
-  #   name: 'node:14.15-alpine'
-  #   args: ['npm', 'install']
+  - id: 'npm install'
+    name: 'node:14.15-alpine'
+    args: ['npm', 'install']
 
-  # - id: 'npm run build'
-  #   name: 'node:14.15-alpine'
-  #   args: ['npm', 'run', 'build']
+  - id: 'npm run build'
+    name: 'node:14.15-alpine'
+    args: ['npm', 'run', 'build']
 
-  # - id: 'npm run test'
-  #   name: 'node:14.15-alpine'
-  #   args: ['npm', 'run', 'test']
+  - id: 'npm run test'
+    name: 'node:14.15-alpine'
+    args: ['npm', 'run', 'test']
 
   - id: 'docker build'
     name: 'gcr.io/cloud-builders/docker'
