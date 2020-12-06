@@ -3,7 +3,7 @@ import { usableUrl, catchErrors, redraw, subredditNotFound } from './utils'
 export async function visualize(vizType) {
   let dataset
   if (!sessionStorage.getItem('dataset')) {
-    let url = getURL()
+    const url = getURL()
     let json
     try {
       json = await fetch(url).then((res) => res.json())
@@ -12,16 +12,17 @@ export async function visualize(vizType) {
       console.log(err) // eslint-disable-line
       subredditNotFound()
       console.clear() // eslint-disable-line
+      // eslint-disable-next-line
       console.log(
         'console cleared to protect your eyes from a cors error cause by fetching from non-existent subreddit'
-      ) // eslint-disable-line
+      )
     }
 
     if (json === undefined) return
 
     dataset = []
 
-    for (var i = 0; i < 20; i++) {
+    for (let i = 0; i < 20; i++) {
       dataset.push({
         id: json.data.children[i].data.id,
         ups: json.data.children[i].data.ups,
@@ -30,8 +31,7 @@ export async function visualize(vizType) {
           json.data.children[i].data.created_utc * 1000
         ).toString(),
         numComments: json.data.children[i].data.num_comments,
-        permalink:
-          'https://www.reddit.com' + json.data.children[i].data.permalink,
+        permalink: `https://www.reddit.com${json.data.children[i].data.permalink}`,
         subreddit: json.data.children[i].data.subreddit_name_prefixed,
         title: json.data.children[i].data.title,
         url: usableUrl(
@@ -50,7 +50,7 @@ export async function visualize(vizType) {
     dataset = JSON.parse(sessionStorage.getItem('dataset'))
   }
 
-  let subreddit = document.getElementById('subreddit-input')
+  const subreddit = document.getElementById('subreddit-input')
   subreddit.style.border = '0'
 
   redraw(dataset, vizType)
@@ -58,9 +58,9 @@ export async function visualize(vizType) {
 }
 
 function getURL() {
-  let subreddit = document.getElementById('subreddit-input').value
-  let sort = document.getElementById('sort-input').value
-  let dateRange = document.getElementById('date-range').value
+  const subreddit = document.getElementById('subreddit-input').value
+  const sort = document.getElementById('sort-input').value
+  const dateRange = document.getElementById('date-range').value
 
   let url = `https://www.reddit.com/r/${subreddit}/${sort}.json`
   if (sort === 'top') {

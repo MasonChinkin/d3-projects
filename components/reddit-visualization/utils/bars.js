@@ -3,7 +3,7 @@ import { barMouseMove, barMouseOut } from './tooltip'
 import { interactionTips } from './utils'
 
 export function drawBars(dataset) {
-  //create svg container
+  // create svg container
   const w = visualization.offsetWidth - 70
   const h = visualization.offsetHeight - 120
   const margin = {
@@ -11,9 +11,9 @@ export function drawBars(dataset) {
     left: 30,
     top: 20,
     bottom: 100,
-  }
+  }}
 
-  let svg = d3
+  const svg = d3
     .select('#visualization')
     .append('svg')
     .attr('id', 'canvas')
@@ -31,25 +31,25 @@ export function drawBars(dataset) {
   const maxUps = d3.max(dataset, (d) => d.ups)
 
   // ranges
-  let x = d3.scaleBand().rangeRound([0, w]).paddingInner(0.05)
+  const x = d3.scaleBand().rangeRound([0, w]).paddingInner(0.05)
 
-  let y = d3
+  const y = d3
     .scaleLinear()
     .range([0, h - margin.top])
     .clamp(true)
 
-  //scales
+  // scales
   x.domain(d3.range(0, dataset.length))
   y.domain([0, d3.max(dataset, (d) => d.ups)])
 
-  //BARS
+  // BARS
   const bars = svg
     .selectAll('rect')
     .data(dataset)
     .enter()
     .append('rect')
     .attr('x', (d, i) => x(i))
-    .attr('y', h) //for animation
+    .attr('y', h) // for animation
     .attr('width', x.bandwidth())
     .attr('height', (d) => y(0))
     .attr('class', 'bar')
@@ -62,7 +62,7 @@ export function drawBars(dataset) {
     .attr('y', (d) => h - y(d.ups))
     .attr('height', (d) => y(d.ups))
 
-  //TEXT
+  // TEXT
   const barLabel = svg
     .selectAll('text')
     .data(dataset)
@@ -78,19 +78,17 @@ export function drawBars(dataset) {
     .attr('y', (d) => {
       if (d.ups >= maxUps / 20) {
         return h - y(d.ups) + 18
-      } else {
-        return h - y(d.ups) - 5
       }
+      return h - y(d.ups) - 5
     })
     .attr('fill', (d) => {
       if (d.ups >= maxUps / 20) {
         return 'white'
-      } else {
-        return 'black'
       }
+      return 'black'
     })
 
-  //transparent rect for hovering over numbers
+  // transparent rect for hovering over numbers
   const hoverRect = svg
     .selectAll('.hover-rect')
     .data(dataset)
@@ -105,14 +103,14 @@ export function drawBars(dataset) {
     .on('mousemove', barMouseMove)
     .on('mouseout', barMouseOut)
 
-  //x axis
+  // x axis
   const xAxis = d3
     .axisBottom()
     .scale(x)
     .tickSize(0)
     .tickFormat((d) =>
       dataset[d].title.length > 20
-        ? dataset[d].title.slice(0, 20) + '...'
+        ? `${dataset[d].title.slice(0, 20)}...`
         : dataset[d].title
     )
 
@@ -127,7 +125,7 @@ export function drawBars(dataset) {
 
   d3.select('.xAxis').select('.domain').style('opacity', 0)
 
-  //y axis
+  // y axis
   svg
     .append('text')
     .text('Upvotes')
@@ -158,8 +156,8 @@ function highlightBarButton() {
 // preview.enabled: true
 // preview.images[0].resolutions[0].url (resolutions 0/1/2 are width 100/200/300 and height 200/400/600)
 // score: 10227
-//subreddit_name_prefixed: "r/funny"
+// subreddit_name_prefixed: "r/funny"
 // subreddit_subscribers: 14407328
-//title: 'What's the number 1 rule when you go shooting?'
+// title: 'What's the number 1 rule when you go shooting?'
 // ups: 10227
 // url: 'https://i.imgur.com/vgLIth5.jpg'

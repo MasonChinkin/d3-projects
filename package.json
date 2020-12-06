@@ -3,22 +3,33 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 8020",
     "build": "next build",
-    "start": "next start -p 8020",
-    "prettier": "prettier --write .",
-    "prettier:fix": "prettier --write .",
-    "eslint": "eslint . --ext js --ext jsx",
+    "commit:skip": "HUSKY_SKIP_HOOKS=1 git commit -m '$1'",
+    "dev": "next dev -p 8020",
     "eslint:fix": "eslint . --ext js --ext jsx --fix",
-    "stylelint": "stylelint '**/*.scss'",
+    "eslint": "eslint . --ext js --ext jsx",
+    "format:fix": "prettier --write .",
+    "format:pre-commit": "pretty-quick --staged",
+    "push:skip:f": "HUSKY_SKIP_HOOKS=1 git push -f",
+    "push:skip": "HUSKY_SKIP_HOOKS=1 git push",
+    "start": "next start -p 8020",
     "stylelint:fix": "stylelint --fix '**/*.scss'",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "stylelint": "stylelint '**/*.scss'",
+    "test:watch": "jest --watch",
+    "test": "jest"
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run eslint && npm run stylelint && npm run prettier"
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test"
     }
+  },
+  "lint-staged": {
+    "*.{js,jsx,json,yml,yaml,css,scss,md}": [
+      "npm run format:pre-commit",
+      "npm run eslint",
+      "npm run stylelint"
+    ]
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
@@ -28,24 +39,32 @@
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
-    "redux-logger": "^3.0.6",
-    "stylelint-config-sass-guidelines": "^7.1.0",
-    "stylelint-order": "^4.1.0"
+    "redux-logger": "^3.0.6"
   },
   "devDependencies": {
-    "@testing-library/react": "^11.1.2",
-    "babel-eslint": "^10.1.0",
+    "@testing-library/react": "^11.2.2",
     "babel-jest": "^26.6.3",
     "eslint": "^7.13.0",
+    "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^4.3.0",
     "jest": "^26.6.3",
     "jest-watch-typeahead": "^0.6.1",
+    "lint-staged": "^10.5.3",
     "prettier": "^2.1.2",
+    "pretty-quick": "^3.1.0",
     "sass": "^1.29.0",
     "stylelint": "^13.7.2",
-    "stylelint-scss": "^3.18.0"
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-recommended-scss": "^4.2.0",
+    "stylelint-config-sass-guidelines": "^7.1.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-scss": "^3.18.0",
+    "stylelint-use-nesting": "^3.0.0"
   },
   "browserslist": {
     "production": [

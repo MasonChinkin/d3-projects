@@ -151,16 +151,17 @@ a {
   outline: none;
 }
 
-body::-webkit-scrollbar {
-  width: 0 !important;
-}
-
+/* stylelint-disable-next-line no-duplicate-selectors */
 body {
   margin: 0;
   overflow-y: hidden;
   padding: 0;
-}
 
-body:hover {
-  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 0 !important;
+  }
+
+  &:hover {
+    overflow-y: scroll;
+  }
 }

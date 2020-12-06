@@ -1,24 +1,58 @@
 {
-  "parser": "babel-eslint",
-  "extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
+  "extends": [
+    "airbnb",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "prettier",
+    "prettier/react"
+  ],
+  "plugins": ["react", "react-hooks"],
   "settings": {
     "react": {
       "version": "detect"
     }
   },
   "env": {
-    "es6": true,
     "browser": true,
     "jest": true,
     "node": true
   },
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
   "rules": {
-    "react/react-in-jsx-scope": 0,
-    "react/display-name": 0,
-    "react/prop-types": 0,
-    "react/no-unescaped-entities": 0,
-    "no-console": 1,
+    // incompatible with our use of web app core as the source for basic dependencies
+    "import/no-extraneous-dependencies": 0,
+
+    // allow mutation of state in redux toolkit using built in immer
+    "no-param-reassign": 0,
+
+    // subjective, e.g. blocks the use of for .. in
+    "no-restricted-syntax": 0,
     "no-undef": 0, // conflicts with d3.js conventions
-    "no-unused-vars": 0 // conflicts with d3.js conventions
+    "no-unused-vars": 0, // conflicts with d3.js conventions
+
+    // this rule is extreme
+    // demands destructuring for grabbing one deeply nested property
+    "prefer-destructuring": 0,
+
+    // by default, jsx code is only allowed in jsx files
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "react/react-in-jsx-scope": 0,
+    "no-alert": 0,
+    "no-shadow": 0,
+    "no-use-before-define": 0,
+    "import/prefer-default-export": 0,
+    "react/no-unescaped-entities": 0,
+    "react/prop-types": 0,
+    "no-plusplus": 0
   }
 }

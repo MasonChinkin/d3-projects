@@ -8,14 +8,14 @@ export function drawScatter(dataset) {
   dataset = dataset.filter((post) => !post.title.includes('Rule'))
   dataset = dataset.filter((post) => !post.title.includes('rule'))
 
-  //BOX
+  // BOX
   const w = visualization.offsetWidth
   const h = visualization.offsetHeight
   const margin = 60
 
   const upsFormat = d3.format('.2s')
 
-  //DEFINE SCALES
+  // DEFINE SCALES
   const xScale = d3
     .scaleTime()
     .domain([d3.min(dataset, (d) => new Date(d.createdString)), new Date()])
@@ -31,7 +31,7 @@ export function drawScatter(dataset) {
     .domain([0, d3.max(dataset, (d) => d.ups)])
     .range([5, 30])
 
-  let color = d3.scaleOrdinal([
+  const color = d3.scaleOrdinal([
     '#a6cee3',
     '#1f78b4',
     '#b2df8a',
@@ -46,7 +46,7 @@ export function drawScatter(dataset) {
     '#b15928',
   ])
 
-  //DEFINE AXES
+  // DEFINE AXES
   const xaxis = d3.axisBottom().scale(xScale).ticks(6)
 
   const yaxis = d3.axisLeft().scale(yScale)
@@ -58,7 +58,7 @@ export function drawScatter(dataset) {
     .attr('width', w)
     .attr('height', h)
 
-  //CLIPPING PATH
+  // CLIPPING PATH
   svg
     .append('clipPath')
     .attr('id', 'chart-area')
@@ -68,7 +68,7 @@ export function drawScatter(dataset) {
     .attr('width', w - margin)
     .attr('height', h - margin)
 
-  //CIRCLES
+  // CIRCLES
   svg
     .append('g')
     .attr('clip-path', 'url(#chart-area)')
@@ -85,27 +85,27 @@ export function drawScatter(dataset) {
     .on('mousemove', barMouseMove)
     .on('mouseout', barMouseOut)
 
-  //GENERATE AXES
+  // GENERATE AXES
   svg
     .append('g')
     .attr('class', 'x axis')
-    .attr('transform', 'translate(0,' + (h - margin) + ')')
+    .attr('transform', `translate(0,${h - margin})`)
     .call(xaxis)
 
   svg
     .append('g')
     .attr('class', 'y axis')
-    .attr('transform', 'translate(' + margin + ', 0)')
+    .attr('transform', `translate(${margin}, 0)`)
     .call(yaxis)
 
-  //y axis
+  // y axis
   svg
     .append('text')
     .text('Number of comments')
     .attr('class', 'y-axis')
     .attr('transform', `translate(${margin * 0.35},${h * 0.6}) rotate(-90)`)
 
-  //x axis
+  // x axis
   svg
     .append('text')
     .text('Date posted')
@@ -113,11 +113,11 @@ export function drawScatter(dataset) {
     .attr('transform', `translate(${w * 0.45},${h - margin * 0.25})`)
 
   // radius
-  let maxUps = d3.max(dataset, (d) => d.ups)
-  let minUps = d3.min(dataset, (d) => d.ups)
-  let legendData = [maxUps, (maxUps + minUps) / 2, minUps]
+  const maxUps = d3.max(dataset, (d) => d.ups)
+  const minUps = d3.min(dataset, (d) => d.ups)
+  const legendData = [maxUps, (maxUps + minUps) / 2, minUps]
 
-  let legendCircle = svg
+  const legendCircle = svg
     .selectAll('.legend-circle')
     .data(legendData)
     .enter()
@@ -150,7 +150,7 @@ export function drawScatter(dataset) {
         20
       }
       )`
-    ) //Im not proud of myself for this one
+    ) // Im not proud of myself for this one
     .text('Upvotes')
 
   // legend labels
@@ -160,8 +160,8 @@ export function drawScatter(dataset) {
     if (i === 1) offset = (legendData[1] + legendData[0]) / 2
     if (i === 2) offset = (legendData[2] + legendData[0]) / 2
 
-    let labelY = h * 0.85 - radiusScale(offset) * 2 * i + 3
-    let labelX = w - radiusScale(legendData[0]) - 10
+    const labelY = h * 0.85 - radiusScale(offset) * 2 * i + 3
+    const labelX = w - radiusScale(legendData[0]) - 10
     svg
       .append('text')
       .attr('class', 'legend-label')

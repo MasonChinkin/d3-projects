@@ -3,29 +3,29 @@ import { barMouseMove, barMouseOut } from './tooltip'
 import { interactionTips } from './utils'
 
 export function drawBubbles(dataset) {
-  let w = visualization.offsetWidth - 10,
-    h = visualization.offsetHeight - 10,
-    margin = {
-      right: 5,
-      left: 5,
-      top: 5,
-      bottom: 5,
-    },
-    nodePadding = 1.5
+  const w = visualization.offsetWidth - 10
+  const h = visualization.offsetHeight - 10
+  const margin = {
+    right: 5,
+    left: 5,
+    top: 5,
+    bottom: 5,
+  }
+  const nodePadding = 1.5
 
   const upsFormat = d3.format('.2s')
 
   // force
-  let force = 0.1
+  const force = 0.1
 
-  let svg = d3
+  const svg = d3
     .select('#visualization')
     .append('svg')
     .attr('id', 'canvas')
     .attr('width', w)
     .attr('height', h)
 
-  let color = d3.scaleOrdinal([
+  const color = d3.scaleOrdinal([
     '#8dd3c7',
     '#ffffb3',
     '#bebada',
@@ -41,12 +41,12 @@ export function drawBubbles(dataset) {
   ])
 
   // range/scale
-  let radiusScale = d3
+  const radiusScale = d3
     .scaleSqrt()
     .domain([0, d3.max(dataset, (d) => d.ups)])
     .range([6, h / 9]) // 6 for minimum size
 
-  let simulation = d3
+  const simulation = d3
     .forceSimulation()
     .force(
       'forceX',
@@ -74,7 +74,7 @@ export function drawBubbles(dataset) {
   // sort the nodes so that the bigger ones are at the back
   dataset = dataset.sort((a, b) => b.ups - a.ups)
 
-  let node = svg
+  const node = svg
     .append('g')
     .selectAll('circle')
     .data(dataset)
@@ -96,7 +96,7 @@ export function drawBubbles(dataset) {
         .on('end', dragended)
     )
 
-  //update the simulation based on the data
+  // update the simulation based on the data
   simulation
     .nodes(dataset)
     .force(
@@ -112,11 +112,11 @@ export function drawBubbles(dataset) {
     })
 
   // radius
-  let maxUps = d3.max(dataset, (d) => d.ups)
-  let minUps = d3.min(dataset, (d) => d.ups)
-  let legendData = [maxUps, (maxUps + minUps) / 2, minUps]
+  const maxUps = d3.max(dataset, (d) => d.ups)
+  const minUps = d3.min(dataset, (d) => d.ups)
+  const legendData = [maxUps, (maxUps + minUps) / 2, minUps]
 
-  let legendCircle = svg
+  const legendCircle = svg
     .selectAll('.legend-circle')
     .data(legendData)
     .enter()
@@ -149,7 +149,7 @@ export function drawBubbles(dataset) {
         20
       }
       )`
-    ) //Im not proud of myself for this one
+    ) // Im not proud of myself for this one
     .text('Upvotes')
 
   // legend labels
@@ -159,8 +159,8 @@ export function drawBubbles(dataset) {
     if (i === 1) offset = (legendData[1] + legendData[0]) / 2
     if (i === 2) offset = (legendData[2] + legendData[0]) / 2
 
-    let labelY = h * 0.85 - radiusScale(offset) * 2 * i + 3
-    let labelX = w - radiusScale(legendData[0]) - 10
+    const labelY = h * 0.85 - radiusScale(offset) * 2 * i + 3
+    const labelX = w - radiusScale(legendData[0]) - 10
     svg
       .append('text')
       .attr('class', 'legend-label')

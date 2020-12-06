@@ -10,7 +10,7 @@ const initializeViz = () => {
 
   d3.selectAll('.suggestion-list-item').on('click', useSuggestion)
 
-  document.querySelectorAll('.clear-local').forEach(function (el) {
+  document.querySelectorAll('.clear-local').forEach((el) => {
     el.addEventListener('change', () => sessionStorage.clear())
   })
 

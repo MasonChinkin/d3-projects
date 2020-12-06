@@ -7,6 +7,7 @@ const store = createStore()
 function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
+      {/* eslint-disable-next-line */}
       <Component {...pageProps} />
     </Provider>
   )

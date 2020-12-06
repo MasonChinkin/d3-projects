@@ -13,7 +13,7 @@ const Tooltip = () => {
       <h2>
         Upvotes: <span id="Upvotes">xxx</span>
       </h2>
-      <img id="pic" />
+      <img id="pic" alt="reddit post attachment" />
     </div>
   )
 }

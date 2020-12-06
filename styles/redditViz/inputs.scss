@@ -7,16 +7,16 @@
   margin: 5px 0;
   width: 100%;
 
-  & > * {
+  > * {
     margin-right: 5px;
+
+    &::last-child {
+      margin-right: 0;
+    }
 
     &:disabled {
       color: #cdcdcd;
     }
-  }
-
-  & > *::last-child {
-    margin-right: 0;
   }
 }
 
@@ -45,32 +45,32 @@
   transition: all 0.4s;
   z-index: 1;
 
+  h1 {
+    margin-bottom: 8px;
+  }
+
   &:hover {
     background-image: none;
     box-shadow: 1px 1px 8px rgba($color: black, $alpha: 0.5);
     height: 122px;
 
-    & h1 {
+    h1 {
       font-weight: bold;
       pointer-events: none;
     }
   }
 
-  & > div {
+  > div {
     display: flex;
     justify-content: space-between;
   }
 
-  & h1 {
-    margin-bottom: 8px;
-  }
-
-  & > ul {
+  > ul {
     display: flex;
     flex-direction: column;
   }
 
-  & li {
+  li {
     cursor: pointer;
     font-weight: 300;
     margin-bottom: 5px;
@@ -80,7 +80,7 @@
     }
   }
 
-  & li:last-child {
+  li:last-child {
     margin-bottom: 0;
   }
 }

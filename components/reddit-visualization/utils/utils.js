@@ -1,6 +1,6 @@
 import * as d3 from 'd3'
 
-//function to only include urls that can be previewed (jpgs)
+// function to only include urls that can be previewed (jpgs)
 export function usableUrl(url, preview, thumbnail) {
   let unencoded
   if (preview) {
@@ -9,24 +9,25 @@ export function usableUrl(url, preview, thumbnail) {
 
   if (url.endsWith('.jpg') || url.endsWith('.png') || url.endsWith('.gif')) {
     return url
-  } else if (preview) {
-    return unencoded
-  } else if (thumbnail) {
-    return thumbnail
-  } else {
-    return null
   }
+  if (preview) {
+    return unencoded
+  }
+  if (thumbnail) {
+    return thumbnail
+  }
+  return null
 }
 
 export function redraw(dataset, vizType) {
   d3.select('#visualization').select('svg').remove()
 
-  //remove any previous viz
+  // remove any previous viz
   vizType(dataset)
 }
 
 export function catchErrors(json) {
-  let sort = document.getElementById('sort-input')
+  const sort = document.getElementById('sort-input')
 
   // error catching
   if (json.error) {
@@ -44,25 +45,25 @@ export function catchErrors(json) {
 }
 
 export function subredditNotFound() {
-  let subreddit = document.getElementById('subreddit-input')
+  const subreddit = document.getElementById('subreddit-input')
   subreddit.style.border = '1px solid red'
 
   setTimeout(() => alert('Subreddit not found!'), 0) // setTimeout so red border renders before alert
 }
 
 export function useSuggestion() {
-  let val = this.innerHTML
-  let input = document.getElementById('subreddit-input')
+  const val = this.innerHTML
+  const input = document.getElementById('subreddit-input')
 
   input.value = val
   sessionStorage.clear() // onchange isn't triggering consistenty in #subreddit-input
 }
 
 export function dateRangeNeeded() {
-  let dateRangeInput = document.getElementById('date-range')
-  let sortVal = document.getElementById('sort-input').value
+  const dateRangeInput = document.getElementById('date-range')
+  const sortVal = document.getElementById('sort-input').value
 
-  dateRangeInput.disabled = sortVal === 'top' ? false : true
+  dateRangeInput.disabled = sortVal !== 'top'
 }
 
 export function interactionTips(tipText) {
