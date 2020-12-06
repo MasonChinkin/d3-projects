@@ -2,7 +2,7 @@ import * as d3 from 'd3'
 import { barMouseMove, barMouseOut } from './tooltip'
 import { interactionTips } from './utils'
 
-export function drawBars(dataset) {
+export const drawBars = (dataset) => {
   // create svg container
   const w = visualization.offsetWidth - 70
   const h = visualization.offsetHeight - 120
@@ -11,7 +11,7 @@ export function drawBars(dataset) {
     left: 30,
     top: 20,
     bottom: 100,
-  }}
+  }
 
   const svg = d3
     .select('#visualization')

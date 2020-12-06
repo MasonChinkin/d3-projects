@@ -7,14 +7,14 @@
   "plugins": ["stylelint-order", "stylelint-scss"],
   "rules": {
     "block-no-empty": true,
+    "color-named": null,
     "indentation": 2,
     "max-nesting-depth": 3,
     "order/properties-alphabetical-order": true,
     "selector-max-id": 1,
-    "color-named": null,
     "selector-pseudo-element-no-unknown": [
       true,
-      { "ignorePseudoElements": ["/regex/", "last-child"] }
+      { "ignorePseudoElements": ["last-child"] }
     ]
   }
 }
