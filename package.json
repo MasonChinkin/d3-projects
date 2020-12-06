@@ -10,6 +10,7 @@
     "eslint": "eslint . --ext js --ext jsx",
     "format:fix": "prettier --write .",
     "format:pre-commit": "pretty-quick --staged",
+    "postinstall": "husky install",
     "push:skip:f": "HUSKY_SKIP_HOOKS=1 git push -f",
     "push:skip": "HUSKY_SKIP_HOOKS=1 git push",
     "start": "next start -p 8020",
