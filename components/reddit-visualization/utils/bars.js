@@ -11,7 +11,7 @@ export function drawBars(dataset) {
     left: 30,
     top: 20,
     bottom: 100,
-  }
+  }}
 
   const svg = d3
     .select('#visualization')
