@@ -15,6 +15,7 @@
     "selector-pseudo-element-no-unknown": [
       true,
       { "ignorePseudoElements": ["last-child"] }
-    ]
+    ],
+    "order/order": null
   }
 }

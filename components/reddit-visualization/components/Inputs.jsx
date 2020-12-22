@@ -1,24 +1,39 @@
 const Inputs = () => {
+  // NOTE: This is old code ported to react. Forgive me.
+  const handleSuggestionClick = (e) => {
+    const val = e.target.value
+    const input = document.getElementById('subreddit-input')
+
+    input.value = val
+    sessionStorage.clear() // onchange isn't triggering consistenty in #subreddit-input
+  }
+
+  // NOTE: This is old code ported to react. Forgive me.
+  const handleTyping = () => {
+    const select = document.getElementById('suggestions')
+
+    select.value = 'Suggestions'
+  }
+
   return (
     <div className="inputs">
-      <div className="suggestions">
-        <div>
-          <h1>Suggestions</h1> <i className="fas fa-caret-down" />
-        </div>
-        <ul className="suggestion-list">
-          <li className="suggestion-list-item">FoodPorn</li>
-          <li className="suggestion-list-item">WholesomeMemes</li>
-          <li className="suggestion-list-item">EarthPorn</li>
-          <li className="suggestion-list-item">DataIsBeautiful</li>
-          <li className="suggestion-list-item">NotTheOnion</li>
-        </ul>
-      </div>
+      <select onChange={handleSuggestionClick} id="suggestions">
+        <option defaultValue="selected" value="Suggestions">
+          ---- Suggestions ----
+        </option>
+        <option value="FoodPorn">FoodPorn</option>
+        <option value="WholesomeMemes">WholesomeMemes</option>
+        <option value="EarthPorn">EarthPorn</option>
+        <option value="DataIsBeautiful">DataIsBeautiful</option>
+        <option value="NotTheOnion">NotTheOnion</option>
+      </select>
       <input
-        type="text"
-        name="subreddit"
         className="clear-local"
         id="subreddit-input"
+        name="subreddit"
+        onChange={handleTyping}
         placeholder="subreddit name"
+        type="text"
       />
       <select name="sort" className="clear-local" id="sort-input">
         <option defaultValue="selected" value="Sort">

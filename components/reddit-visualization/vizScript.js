@@ -3,12 +3,10 @@ import { visualize } from './utils/inputs'
 import { drawBars } from './utils/bars'
 import { drawBubbles } from './utils/bubbles'
 import { drawScatter } from './utils/scatter'
-import { useSuggestion, dateRangeNeeded } from './utils/utils'
+import { dateRangeNeeded } from './utils/utils'
 
 const initializeViz = () => {
   sessionStorage.clear()
-
-  d3.selectAll('.suggestion-list-item').on('click', useSuggestion)
 
   document.querySelectorAll('.clear-local').forEach((el) => {
     el.addEventListener('change', () => sessionStorage.clear())

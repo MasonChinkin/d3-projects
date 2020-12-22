@@ -1,8 +1,4 @@
-@import './redditViz/reset';
-@import './redditViz/bars';
-@import './redditViz/bubbles';
-@import './redditViz/inputs';
-@import './redditViz/non-viz';
-@import './redditViz/scatter';
-@import './redditViz/tooltip';
-@import './redditViz/viz-container';
+@import './reset';
+@import './media-query';
+@import './non-viz';
+@import './redditViz/redditViz';

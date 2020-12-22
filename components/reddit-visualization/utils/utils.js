@@ -51,14 +51,6 @@ export function subredditNotFound() {
   setTimeout(() => alert('Subreddit not found!'), 0) // setTimeout so red border renders before alert
 }
 
-export function useSuggestion() {
-  const val = this.innerHTML
-  const input = document.getElementById('subreddit-input')
-
-  input.value = val
-  sessionStorage.clear() // onchange isn't triggering consistenty in #subreddit-input
-}
-
 export function dateRangeNeeded() {
   const dateRangeInput = document.getElementById('date-range')
   const sortVal = document.getElementById('sort-input').value

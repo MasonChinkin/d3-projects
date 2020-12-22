@@ -22,7 +22,8 @@ export async function visualize(vizType) {
 
     dataset = []
 
-    for (let i = 0; i < 20; i++) {
+    const dataCount = window.innerWidth <= 768 ? 10 : 20
+    for (let i = 0; i < dataCount; i++) {
       dataset.push({
         id: json.data.children[i].data.id,
         ups: json.data.children[i].data.ups,
