@@ -88,13 +88,13 @@ export function drawScatter(dataset) {
   // GENERATE AXES
   svg
     .append('g')
-    .attr('class', 'x axis')
+    .attr('class', 'x-axis')
     .attr('transform', `translate(0,${h - margin})`)
     .call(xaxis)
 
   svg
     .append('g')
-    .attr('class', 'y axis')
+    .attr('class', 'y-axis')
     .attr('transform', `translate(${margin}, 0)`)
     .call(yaxis)
 
