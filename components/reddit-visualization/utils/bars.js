@@ -123,7 +123,7 @@ export const drawBars = (dataset) => {
     .attr('dx', '-.8em')
     .attr('dy', '.15em')
 
-  d3.select('.xAxis').select('.domain').style('opacity', 0)
+  d3.select('.x-axis').select('.domain').style('opacity', 0)
 
   // y axis
   svg

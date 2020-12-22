@@ -59,9 +59,10 @@ export function dateRangeNeeded() {
 }
 
 export function interactionTips(tipText) {
+  const xMultiplier = window.innerWidth <= 768 ? 0.3 : 0.5
   d3.select('#canvas')
     .append('text')
-    .attr('x', visualization.offsetWidth * 0.5)
+    .attr('x', visualization.offsetWidth * xMultiplier)
     .attr('y', visualization.offsetHeight * 0.04)
     .text(tipText)
     .attr('class', 'interaction-tips')
