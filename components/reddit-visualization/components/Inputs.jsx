@@ -1,17 +1,13 @@
 const Inputs = () => {
-  // NOTE: This is old code ported to react. Forgive me.
+  // NOTE: This is old code ported to react. Forgive me!
   const handleSuggestionClick = (e) => {
     const val = e.target.value
     const input = document.getElementById('subreddit-input')
 
     input.value = val
     sessionStorage.clear() // onchange isn't triggering consistenty in #subreddit-input
-  }
 
-  // NOTE: This is old code ported to react. Forgive me.
-  const handleTyping = () => {
     const select = document.getElementById('suggestions')
-
     select.value = 'Suggestions'
   }
 
@@ -31,7 +27,6 @@ const Inputs = () => {
         className="clear-local"
         id="subreddit-input"
         name="subreddit"
-        onChange={handleTyping}
         placeholder="subreddit name"
         type="text"
       />

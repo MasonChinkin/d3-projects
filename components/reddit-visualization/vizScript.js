@@ -1,5 +1,5 @@
 import * as d3 from 'd3'
-import { visualize } from './utils/inputs'
+import { visualize } from './utils/visualize'
 import { drawBars } from './utils/bars'
 import { drawBubbles } from './utils/bubbles'
 import { drawScatter } from './utils/scatter'
