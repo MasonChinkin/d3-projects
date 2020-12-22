@@ -53,7 +53,7 @@ export const drawBars = (dataset) => {
     .attr('width', x.bandwidth())
     .attr('height', (d) => y(0))
     .attr('class', 'bar')
-    .on('click', (d) => window.open(d.permalink))
+    .on('click', (e, d) => window.open(d.permalink))
     .on('mousemove', barMouseMove)
     .on('mouseout', barMouseOut)
     .transition('start')
@@ -99,7 +99,7 @@ export const drawBars = (dataset) => {
     .attr('y', (d) => h - y(d.ups) - 20)
     .attr('width', x.bandwidth())
     .attr('height', (d) => (d.ups >= maxUps / 20 ? 0 : 20))
-    .on('click', (d) => window.open(d.permalink))
+    .on('click', (e, d) => window.open(d.permalink))
     .on('mousemove', barMouseMove)
     .on('mouseout', barMouseOut)
 

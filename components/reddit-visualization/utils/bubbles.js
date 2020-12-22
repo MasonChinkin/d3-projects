@@ -85,7 +85,7 @@ export function drawBubbles(dataset) {
     .attr('fill', (d) => color(d.id))
     .attr('cx', (d) => d.x)
     .attr('cy', (d) => d.y)
-    .on('click', (d) => window.open(d.permalink))
+    .on('click', (e, d) => window.open(d.permalink))
     .on('mousemove', barMouseMove)
     .on('mouseout', barMouseOut)
     .call(

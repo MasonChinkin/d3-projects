@@ -81,7 +81,7 @@ export function drawScatter(dataset) {
     .attr('cx', (d) => xScale(new Date(d.createdString)))
     .attr('cy', (d) => yScale(d.numComments))
     .attr('r', (d) => radiusScale(d.ups))
-    .on('click', (d) => window.open(d.permalink))
+    .on('click', (e, d) => window.open(d.permalink))
     .on('mousemove', barMouseMove)
     .on('mouseout', barMouseOut)
 
